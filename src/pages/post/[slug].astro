@@ -1,0 +1,55 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import type { SanityDocument } from "@sanity/client";
+import { loadQuery } from "../../sanity/lib/load-query";
+import PortableText from "../../components/PortableText.astro";
+
+export async function getStaticPaths() {
+    const { data: posts } = await loadQuery<SanityDocument[]>({
+        query: `*[_type == "post"]`,
+    });
+
+    return posts.map(({ slug }) => {
+        return {
+            params: {
+                slug: slug.current,
+            },
+        };
+    });
+}
+
+const { params } = Astro;
+const { slug } = Astro.params;
+
+type PortableTextBlock = {
+    _key: string;
+    _type: string;
+    [key: string]: unknown;
+};
+
+type Post = {
+    title: string;
+    body: PortableTextBlock[];
+    mainImage?: {
+        _type: "image";
+        asset?: { _ref: string; _type: string };
+        alt?: string;
+    };
+};
+
+const { data: post } = await loadQuery<Post>({
+    query: `*[_type == "post" && slug.current == $slug][0]`,
+    params,
+});
+---
+
+<Layout>
+    <div class="flex flex-col items-center justify-center gap-8 px-6 py-12">
+        <h1 class="text-3xl font-bold">A post about {post.title}</h1>
+        <PortableText portableText={post.body} />
+        <div class="w-64 h-64 overflow-hidden rounded-2xl border-2 border-solid border-amber-500">
+            <PortableText portableText={post.mainImage} class="h-full w-full object-cover" />
+        </div>
+    </div>
+    
+</Layout>
