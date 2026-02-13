@@ -1,8 +1,42 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import avatar from "../assets/avatar.jpg";
 ---
 
 <Layout>
-    <h1>Welcome to my blog!</h1>
-    <p>This is the homepage of my blog built with Astro and Sanity.</p>
+    <section class="mx-auto flex max-w-4xl flex-col gap-10 px-6 py-16">
+        <div class="rounded-3xl bg-white p-10 shadow-lg">
+            <div class="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-12">
+                <img
+                    src={avatar.src}
+                    width="200"
+                    height="200"
+                    alt="Portrait of James Pilkington"
+                    class="h-48 w-48 rounded-2xl object-cover shadow-md"
+                    loading="lazy"
+                />
+                <div>
+                    <p class="text-sm uppercase tracking-[0.4em] text-slate-500">Pilkington Enterprises</p>
+                    <h1 class="mt-4 text-4xl font-bold text-slate-900">Building in public</h1>
+                    <p class="mt-4 text-lg text-slate-700">
+                        I'm James Pilkington—self-taught developer, ATV trail rider, and AI tinkerer. I use this blog to log experiments, ship small projects, and explore how modern tools help me learn faster.
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-4">
+                        <a
+                            href="/post"
+                            class="inline-flex items-center rounded-full bg-amber-500 px-5 py-2 text-sm font-semibold uppercase tracking-wide text-slate-900 transition hover:bg-amber-400"
+                        >
+                            Read the blog
+                        </a>
+                        <a
+                            href="/about"
+                            class="inline-flex items-center rounded-full border border-slate-300 px-5 py-2 text-sm font-semibold uppercase tracking-wide text-slate-900 transition hover:-translate-y-0.5"
+                        >
+                            About me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </Layout>

@@ -1,25 +1,22 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import type { SanityDocument } from "@sanity/client";
 import { loadQuery } from "../../sanity/lib/load-query";
+import { getAllPosts } from "../../sanity/lib/get-all-posts";
 import PortableText from "../../components/PortableText.astro";
 
 export async function getStaticPaths() {
-    const { data: posts } = await loadQuery<SanityDocument[]>({
-        query: `*[_type == "post"]`,
-    });
+    const posts = await getAllPosts();
 
-    return posts.map(({ slug }) => {
-        return {
+    return posts
+        .filter((post) => post.slug?.current)
+        .map(({ slug }) => ({
             params: {
                 slug: slug.current,
             },
-        };
-    });
+        }));
 }
 
 const { params } = Astro;
-const { slug } = Astro.params;
 
 type PortableTextBlock = {
     _key: string;
@@ -45,7 +42,7 @@ const { data: post } = await loadQuery<Post>({
 
 <Layout>
     <div class="flex flex-col items-center justify-center gap-8 px-6 py-12">
-        <h1 class="text-3xl font-bold">A post about {post.title}</h1>
+        <h1 class="text-3xl font-bold">{post.title}</h1>
         <PortableText portableText={post.body} />
         <div class="w-64 h-64 overflow-hidden rounded-2xl border-2 border-solid border-amber-500">
             <PortableText portableText={post.mainImage} class="h-full w-full object-cover" />
