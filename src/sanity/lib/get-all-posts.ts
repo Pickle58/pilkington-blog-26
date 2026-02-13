@@ -4,7 +4,7 @@ import { loadQuery } from "./load-query";
 
 export type PostSummary = SanityDocument & {
   title?: string;
-  slug?: { current: string };
+  slug: { current: string };
   publishedAt?: string;
   mainImage?: unknown;
 };
