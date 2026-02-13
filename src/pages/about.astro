@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/Layout.astro";
+import avatar from "../assets/avatar.jpg";
+---
+
+<Layout>
+	<section class="mx-auto flex max-w-4xl flex-col gap-10 px-6 py-16">
+		<div class="rounded-3xl bg-white p-10 shadow-lg">
+			<div class="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-12">
+			<img
+				src={avatar.src}
+				width="200"
+				height="200"
+				alt="Portrait of James Pilkington"
+				class="h-48 w-48 rounded-2xl object-cover shadow-md"
+				loading="lazy"
+			/>
+			<div>
+				<p class="text-sm uppercase tracking-[0.4em] text-slate-500">About</p>
+				<h1 class="mt-4 text-4xl font-bold text-slate-900">
+					Hi, I'm James Pilkington 🤖
+				</h1>
+				<p class="mt-4 text-lg text-slate-700">
+					I'm teaching myself to code and exploring how AI can make me a faster, more creative builder. When I'm not debugging, I'm riding ATVs, hiking, or out on the water kayaking. This space is where I document what I'm learning and experiment with new tools.
+				</p>
+			</div>
+			</div>
+		</div>
+
+		<div class="grid gap-6 sm:grid-cols-2">
+			<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+				<h2 class="text-xl font-semibold text-slate-900">What I'm focusing on</h2>
+				<ul class="mt-4 space-y-2 text-slate-700">
+					<li>• Leveling up my JavaScript + Astro skills</li>
+					<li>• Experimenting with AI-assisted coding workflows</li>
+					<li>• Building small, shippable projects each month</li>
+				</ul>
+			</div>
+			<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+				<h2 class="text-xl font-semibold text-slate-900">Outside the editor</h2>
+				<ul class="mt-4 space-y-2 text-slate-700">
+					<li>• Trail riding on my ATV</li>
+					<li>• Hiking new routes around Arizona and California</li>
+					<li>• Kayaking whenever the weather cooperates</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="flex items-center gap-4">
+			<a
+				href="https://github.com/Pickle58"
+				target="_blank"
+				rel="noreferrer"
+				class="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-900 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-400"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="currentColor"
+					class="h-5 w-5"
+					aria-hidden="true"
+				>
+					<path
+						fill-rule="evenodd"
+						d="M12 2C6.477 2 2 6.484 2 12.012c0 4.425 2.865 8.18 6.839 9.504.5.09.682-.217.682-.483 0-.237-.009-.866-.014-1.7-2.782.605-3.37-1.342-3.37-1.342-.455-1.157-1.11-1.465-1.11-1.465-.907-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.091-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.952 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.91-1.296 2.748-1.026 2.748-1.026.546 1.378.203 2.397.1 2.65.64.7 1.027 1.595 1.027 2.688 0 3.85-2.338 4.696-4.566 4.944.36.31.68.922.68 1.859 0 1.342-.012 2.424-.012 2.753 0 .269.18.579.688.48A10.015 10.015 0 0 0 22 12.012C22 6.484 17.523 2 12 2Z"
+						clip-rule="evenodd"
+					/>
+				</svg>
+				<span class="font-medium">GitHub · Pickle58</span>
+			</a>
+		</div>
+	</section>
+</Layout>
